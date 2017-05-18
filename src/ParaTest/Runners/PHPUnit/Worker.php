@@ -19,7 +19,7 @@ class Worker
     private $chunks = '';
     private $alreadyReadOutput = '';
     /**
-     * @var ExecutableTest
+     * @var ExecutableTest|null
      */
     private $currentlyExecuting;
 
