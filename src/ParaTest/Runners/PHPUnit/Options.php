@@ -65,15 +65,16 @@ class Options
      */
     protected $annotations = array();
 
-    protected $runner;
-    protected $noTestTokens;
-    protected $colors;
-    protected $testsuite;
-    protected $maxBatchSize;
-    protected $filter;
-    protected $groups;
+    // TODO: figure out which of these should be protected (read-only)
+    public $runner;
+    public $noTestTokens;
+    public $colors;
+    public $testsuite;
+    public $maxBatchSize;
+    public $filter;
+    public $groups;
     /** @var string[] */
-    protected $excludeGroups;
+    public $excludeGroups;
 
     public function __construct($opts = array())
     {

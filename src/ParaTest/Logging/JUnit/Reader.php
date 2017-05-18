@@ -101,6 +101,40 @@ class Reader extends MetaProvider
     }
 
     /**
+     * Return a value as a float or integer
+     *
+     * @param $property
+     * @return float|int
+     */
+    protected function getNumericValue($property)
+    {
+        return ($property === 'time')
+            ? floatval($this->suites[0]->$property)
+            : intval($this->suites[0]->$property);
+    }
+
+    /**
+     * Return messages for a given type
+     *
+     * @param $type
+     * @return array
+     */
+    protected function getMessages($type)
+    {
+        $messages = array();
+        $suites = $this->isSingle ? $this->suites : $this->suites[0]->suites;
+        foreach ($suites as $suite) {
+            $messages = array_merge($messages, array_reduce($suite->cases, function ($result, $case) use ($type) {
+                return array_merge($result, array_reduce($case->$type, function ($msgs, $msg) {
+                    $msgs[] = $msg['text'];
+                    return $msgs;
+                }, array()));
+            }, array()));
+        }
+        return $messages;
+    }
+
+    /**
      * Remove the JUnit xml file
      */
     public function removeLog()
