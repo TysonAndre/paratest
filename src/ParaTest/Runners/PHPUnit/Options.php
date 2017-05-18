@@ -65,6 +65,16 @@ class Options
      */
     protected $annotations = array();
 
+    protected $runner;
+    protected $noTestTokens;
+    protected $colors;
+    protected $testsuite;
+    protected $maxBatchSize;
+    protected $filter;
+    protected $groups;
+    /** @var string[] */
+    protected $excludeGroups;
+
     public function __construct($opts = array())
     {
         foreach (self::defaults() as $opt => $value) {

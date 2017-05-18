@@ -45,6 +45,11 @@ class TestFileLoader
      */
     protected $excludingFiles = false;
 
+    /**
+     * @var Options|null
+     */
+    public $options;
+
 
     public function __construct($options = null)
     {
