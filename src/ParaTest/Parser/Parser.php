@@ -129,11 +129,10 @@ class Parser
      */
     private function _searchForUnitTestClass(array $classes, $filename) {
         // TODO: After merging this PR or other PR for phpunit 6 support, keep only the applicable subclass name
-        $testCaseClassName = class_exists('PHPUnit\\Framework\\TestCase') ? 'PHPUnit\\Framework\\TestCase' : 'PHPUnit_Framework_TestCase';
         foreach ($classes as $className) {
             $class = new \ReflectionClass($className);
             if ($class->getFileName() == $filename) {
-                if ($class->isSubclassOf($testCaseClassName)) {
+                if ($class->isSubclassOf('PHPUnit\\Framework\\TestCase' )) {
                    return $className;
                }
             }
