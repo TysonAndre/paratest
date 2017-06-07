@@ -1,6 +1,6 @@
 <?php
 
-new class() {
+new class() extends PHPUnit\Framework\TestCase {
     /**
      * @return class
      */
